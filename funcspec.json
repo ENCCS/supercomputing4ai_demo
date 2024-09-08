@@ -1,0 +1,99 @@
+{
+    "nodename": "",
+    "funcname": "execute",
+    "args": [],
+    "kwargs": {
+        "args": [
+            "/cfs/eurohpc-summit-demo/models/serving/main.py"
+        ],
+        "cmd": "python3",
+        "docker-image": "johan/hackaton",
+        "init-cmd": "",
+        "rebuild-image": false
+    },
+    "priority": 5,
+    "maxwaittime": -1,
+    "maxexectime": 599,
+    "maxretries": 3,
+    "conditions": {
+        "colonyname": "hpc",
+        "executornames": [
+            "rocinante"
+        ],
+        "executortype": "container-executor",
+        "dependencies": [],
+        "nodes": 1,
+        "cpu": "10000m",
+        "processes": 0,
+        "processes-per-node": 1,
+        "mem": "15000Mi",
+        "storage": "",
+        "gpu": {
+            "name": "",
+            "mem": "",
+            "count": 1,
+            "nodecount": 0
+        },
+        "walltime": 600
+    },
+    "fs": {
+        "mount": "/cfs",
+        "dirs": [
+            {
+                "label": "/eurohpc-summit-demo/models/serving",
+                "dir": "/eurohpc-summit-demo/models/serving",
+                "keepfiles": true,
+                "onconflicts": {
+                    "onstart": {
+                        "keeplocal": false
+                    },
+                    "onclose": {
+                        "keeplocal": false 
+                    }
+                }
+            },
+            {
+                "label": "/eurohpc-summit-demo/pretrained-models",
+                "dir": "/eurohpc-summit-demo/pretrained-models",
+                "keepfiles": true,
+                "onconflicts": {
+                    "onstart": {
+                        "keeplocal": false
+                    },
+                    "onclose": {
+                        "keeplocal": true
+                    }
+                }
+            },
+            {
+                "label": "/eurohpc-summit-demo/images",
+                "dir": "/eurohpc-summit-demo/images",
+                "keepfiles": true,
+                "onconflicts": {
+                    "onstart": {
+                        "keeplocal": false
+                    },
+                    "onclose": {
+                        "keeplocal": false
+                    }
+                }
+            },
+            {
+                "label": "/eurohpc-summit-demo/generated-images",
+                "dir": "/eurohpc-summit-demo/generated-images",
+                "keepfiles": true,
+                "onconflicts": {
+                    "onstart": {
+                        "keeplocal": false
+                    },
+                    "onclose": {
+                        "keeplocal": true
+                    }
+                }
+            }
+        ]
+    },
+    "env": {
+        "IMAGE": "water_body_17.jpg"
+    }
+}
