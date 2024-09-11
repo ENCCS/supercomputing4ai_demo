@@ -1,0 +1,8 @@
+Bootstrap: docker
+From: rocm/tensorflow
+
+#%environment
+#    CONDA_SOLVER=libmamba
+
+%post
+    pip install numpy==1.26.4 scikit-learn matplotlib python-opencv-headless pillow

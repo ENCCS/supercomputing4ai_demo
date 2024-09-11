@@ -1,0 +1,6 @@
+.vscode/
+*.pyc
+tensorflow_latest.sif
+.tmp/
+models/unet/result/
+images/generated-images/

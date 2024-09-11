@@ -12,7 +12,7 @@ from keras.callbacks import Callback
 from keras.optimizers import Adam
 from keras.layers import Input, Conv2D, Conv2DTranspose, MaxPooling2D, concatenate, Dropout
 
-projdir = '.'
+projdir = '/models/unet'
 
 if not os.path.exists(projdir + '/result/training/'):
     os.makedirs(projdir + '/result/training/')
@@ -128,7 +128,7 @@ sys.stdout.flush()
 def mask_threshold(image, threshold=0.25):
   return image>threshold
 
-epochs = 100 
+epochs = 2 
 batch_size = 32
 
 history = model.fit(images_train, mask_train,
@@ -159,14 +159,14 @@ plt.legend(['TRAIN', 'TEST'], loc='upper left')
 plt.tight_layout()
 
 
-plt.savefig(projdir + '/result/training/res_' + processid + '.png')
+plt.savefig(projdir + '/result/training/res_' + '0' + '.png')
 
 ####################################################
 # Save model weights 
 ####################################################
 
 name = "unet2" 
-weights_path = os.path.join(projdir, 'result', 'models', f'weights_{name}.h5')
+weights_path = os.path.join(projdir, 'result', 'models', f'{name}.weights.h5')
 model.save_weights(weights_path)
 print(f"Model weights saved to {weights_path}")
 
@@ -198,7 +198,7 @@ def plot_results(threshold=0.5):
     plt.imshow(threshold_mask, cmap='gray');plt.title(f'Predicted Mask with cutoff={threshold}')
 
     plt.tight_layout()
-    plt.savefig(projdir + '/result/training/samples_' + processid + '.png')
+    plt.savefig(projdir + '/result/training/samples_' + '0' + '.png')
 
 # Plot results on test data
 plot_results(threshold=0.4)

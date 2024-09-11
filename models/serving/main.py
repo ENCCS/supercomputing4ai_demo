@@ -82,13 +82,13 @@ model = Model(input_layer, output_layer)
 model.compile(loss="binary_crossentropy", optimizer="adam", metrics=["accuracy"])
 model.summary()
 
-model_name = "unet2"
-weights_path = '../unet/result/models/' + model_name 
+model_name = 'unet2'
+weights_path = os.path.join('/models/unet/result/models/', (model_name + '.weights.h5')) 
 model.load_weights(weights_path)
 print("model: ", weights_path)
 
 image_name = sys.argv[1]
-image_path = '../images/' + image_name
+image_path = '/images/' + image_name
 print("image: ", image_path)
 
 image = Image.open(image_path)
@@ -128,8 +128,8 @@ plt.margins(0, 0)
 plt.gca().xaxis.set_major_locator(plt.NullLocator())
 plt.gca().yaxis.set_major_locator(plt.NullLocator())
 
-image_path = '../generated-images/' + image_name
+image_path = '/images/generated-images/' + image_name
 
-if not os.path.exists('..' + '/generated-images/'):
-    os.makedirs('..' + '/generated_images')
+if not os.path.exists('/images' + '/generated-images/'):
+    os.makedirs('/images' + '/generated-images')
 plt.savefig(image_path)
