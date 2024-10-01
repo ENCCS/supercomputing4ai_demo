@@ -128,7 +128,7 @@ sys.stdout.flush()
 def mask_threshold(image, threshold=0.25):
   return image>threshold
 
-epochs = 2 
+epochs = 20
 batch_size = 32
 
 history = model.fit(images_train, mask_train,
